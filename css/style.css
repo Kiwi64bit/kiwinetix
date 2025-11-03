@@ -55,7 +55,7 @@ body {
   fill: hsl(180, 100%, 50%);
 }
 
-.btn-primary {
+.btn-custom-primary {
   --bs-btn-color: #000;
   --bs-btn-bg: hsl(180, 100%, 50%);
   --bs-btn-border-color: var(--bs-btn-bg);
