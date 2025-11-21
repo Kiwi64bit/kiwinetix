@@ -206,75 +206,43 @@ main {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 20vw;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: "topleft right" "bottomleft right";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 200px;
+  grid-template-areas: "preview preview" "quote quote";
+}
+@media (min-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr 25%;
+    grid-template-rows: 1fr;
+    grid-template-areas: "preview quote";
+  }
 }
 .hero > * {
   border: 1px hsla(0, 0%, 100%, 0.2) solid;
 }
-.hero .hero-text {
-  padding: 1rem;
-}
-.hero .quote {
-  padding: 1rem;
-}
-.hero .quote .quote-author {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: center;
-  --corner-radius: 1rem;
-  --name-width: 70%;
-  --name-height: 3rem;
-  --name-angle: 45deg;
-  --name-offset: calc(var(--name-height) / tan(var(--name-angle)));
-  --name-margin: 0.5rem;
-}
-.hero .quote .quote-author .author-name-ticket {
-  display: flex;
-  align-items: center;
-  width: calc(var(--name-width) + var(--name-offset) / 2);
-  height: calc(var(--name-height) - var(--name-margin));
-  position: absolute;
-  background-color: #8b5cf6;
-  left: 0;
-  bottom: 0;
-  transition: all 0.25s ease;
-  clip-path: polygon(0 0, calc(100% - var(--name-offset) - var(--name-margin) * (1 / sin(var(--name-angle)) - 1 / tan(var(--name-angle)))) 0, calc(100% - var(--name-margin) / sin(var(--name-angle))) 100%, var(--corner-radius) 100%, 0 calc(100% - var(--corner-radius)), 0 100%);
-}
-.hero .quote .quote-author .author-name-ticket:hover {
-  scale: 1.01;
-  background-color: rgb(104.6046511628, 43.6686046512, 243.3313953488);
-}
-.hero .quote .quote-author .author-name-ticket .author-name {
-  color: #fff;
-  font-weight: 600;
-  text-transform: capitalize;
-  translate: 0;
-  font-size: 1.25rem;
-  margin: 0;
-  margin-left: 1em;
-}
-.hero .quote .quote-author img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-  object-position: center;
-  top: 0;
-  left: 0;
-  transition: scale 0.25s ease;
-  clip-path: polygon(var(--corner-radius) 0, calc(100% - var(--corner-radius)) 0, 100% var(--corner-radius), 100% calc(100% - var(--corner-radius)), calc(100% - var(--corner-radius)) 100%, calc(var(--name-width) + var(--name-offset) / 2) 100%, calc(var(--name-width) - var(--name-offset) / 2) calc(100% - var(--name-height)), 0 calc(100% - var(--name-height)), 0 calc(100% - var(--corner-radius) - var(--name-height)), 0 var(--corner-radius));
-}
-.hero .quote .quote-author img:hover {
-  scale: 1.01;
-}
 .hero .preview {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.hero .preview .hero-text {
+  grid-area: 1/1/3/2;
+  padding: 1rem;
+  border-bottom: 1px hsla(0, 0%, 100%, 0.2) solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+@media (min-width: 992px) {
+  .hero .preview .hero-text {
+    grid-area: 1/1/2/2;
+  }
+}
+.hero .preview .video {
+  grid-area: 2/1/3/2;
   position: relative;
 }
-.hero .preview .bg-video {
+.hero .preview .video .bg-video {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -284,13 +252,19 @@ main {
   filter: brightness(0.5);
   z-index: -1;
 }
-.hero .preview .content {
+.hero .preview .video .content {
   --padding: 1rem;
+  display: none;
   position: relative;
   width: 100%;
   height: 100%;
 }
-.hero .preview .content .img-1 {
+@media (min-width: 992px) {
+  .hero .preview .video .content {
+    display: block;
+  }
+}
+.hero .preview .video .content .img-1 {
   position: absolute;
   top: var(--padding);
   left: var(--padding);
@@ -300,7 +274,7 @@ main {
   object-position: center;
   clip-path: polygon(1rem 0, calc(50% - 0.5rem) 0, calc(50% + 0.5rem) 0.5rem, calc(100% - 1rem) 0.5rem, 100% 1.5rem, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 1rem 100%, 0 calc(100% - 1rem), 0 1rem);
 }
-.hero .preview .content .img-2 {
+.hero .preview .video .content .img-2 {
   position: absolute;
   bottom: var(--padding);
   right: var(--padding);
@@ -310,18 +284,63 @@ main {
   object-position: center;
   clip-path: polygon(2rem 0, calc(100% - 1rem) 0, 100% 1rem, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 1rem 100%, 0 calc(100% - 1rem), 0 calc(50% + 0.5rem), 1rem calc(50% - 0.5rem), 1rem 1rem);
 }
+.hero .quote {
+  position: relative;
+  padding: 1rem;
+}
+.hero .quote .quote-text {
+  max-width: 70%;
+}
+.hero .quote .quote-author {
+  --k: 1rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 30%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 992px) {
+  .hero .quote .quote-author {
+    position: static;
+    width: 100%;
+  }
+}
+.hero .quote .quote-author img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: scale 0.25s ease;
+  clip-path: polygon(var(--k) 0, 100% 0, 100% calc(100% - var(--k)), calc(100% - var(--k)) 100%, 0 100%, 0 var(--k));
+}
+.hero .quote .quote-author img:hover {
+  scale: 1.01;
+}
 
 .about {
   --gap: 0.25rem;
   display: grid;
   padding: calc(var(--gap));
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   border: 1px hsla(0, 0%, 100%, 0.2) solid;
   transform-style: preserve-3d;
   perspective: 1000px;
   overflow: hidden;
-  grid-template-areas: "card-1 card-1 card-1 card-1 card-2" "card-4 card-3 card-3 card-3 card-2" "card-4 card-3 card-3 card-3 card-2" "card-4 card-3 card-3 card-3 card-2" "card-4 card-5 card-5 card-5 card-5";
+  grid-template-areas: "card-1 card-1 card-1 card-1 card-1" "card-2 card-2 card-2 card-2 card-2" "card-3 card-3 card-3 card-3 card-3" "card-4 card-4 card-4 card-4 card-4" "card-5 card-5 card-5 card-5 card-5";
+}
+@media (min-width: 576px) {
+  .about {
+    grid-template-areas: "card-1 card-1 card-1 card-2 card-2" "card-3 card-3 card-3 card-2 card-2" "card-3 card-3 card-3 card-2 card-2" "card-4 card-4 card-4 card-4 card-4" "card-5 card-5 card-5 card-5 card-5";
+  }
+}
+@media (min-width: 768px) {
+  .about {
+    grid-template-areas: "card-1 card-1 card-1 card-1 card-2" "card-4 card-5 card-5 card-5 card-2" "card-4 card-5 card-5 card-5 card-2" "card-4 card-5 card-5 card-5 card-2" "card-4 card-3 card-3 card-3 card-3";
+  }
 }
 .about.show .about-card {
   transform: translateZ(0px);
