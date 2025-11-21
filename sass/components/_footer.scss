@@ -1,0 +1,31 @@
+@use "../abstracts" as *;
+
+footer {
+    min-height: fit-content;
+    max-width: 960px;
+    margin: auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid hsla(240, 9%, 66%, 0.2);
+
+    .social-media-container {
+        display: flex;
+        gap: 1rem;
+
+        .social-link {
+            font-size: 1.25rem;
+            color: #fff;
+            transition: color 0.25s ease;
+            text-decoration: none;
+
+            &:hover {
+                color: $bright-purple;
+            }
+        }
+    }
+}

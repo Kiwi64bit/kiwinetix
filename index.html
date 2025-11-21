@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Kiwinetix.js</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="css/bootstrap.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/style.css.map" />
@@ -15,9 +21,10 @@
     </head>
 
     <body data-bs-theme="dark">
-        <header id="home" class="px-2 py-3 d-flex flex-column">
-            <nav class="navbar navbar-expand-lg py-2 px-4">
-                <div class="container">
+        <div id="body" class="body-content">
+            <nav id="navbar" class="navbar navbar-expand-md py-2 px-4" style="grid-area: navbar">
+                <div class="navbar-progress" id="navbarProgress"></div>
+                <div class="container-fluid">
                     <a class="navbar-brand d-flex justify-content-center align-items-center gap-2" href="#">
                         <svg
                             class="fill-primary"
@@ -42,7 +49,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarNav">
-                        <ul class="navbar-nav text-center ms-auto">
+                        <ul class="navbar-nav text-center">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#home">Home</a>
                             </li>
@@ -55,457 +62,382 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#learn">Learn</a>
                             </li>
-                            <li class="d-flex justify-content-center align-items-center gap-2 px-2">
-                                <button class="btn btn-custom-primary">Sign Up</button>
-                                <button class="btn btn-semi-opaque">Log In</button>
-                            </li>
                         </ul>
                     </div>
                 </div>
+                <button class="sign-up">Sign Up</button>
             </nav>
 
-            <div class="hero p-3 flex-grow-1 d-flex justify-content-center align-items-center">
-                <div class="text-content text-center">
-                    <h1>Explore the Universe of Physics</h1>
-                    <p class="text-secondary">
-                        An inspiring platform to make physics interactive and understandable. Run simulations, learn
-                        complex concepts, and discover the laws that govern our world.
-                    </p>
-                    <button class="btn btn-custom-primary px-3 py-2 rounded-3">Start Exploring</button>
-                </div>
-            </div>
-        </header>
+            <main id="main" style="grid-area: main" data-bs-spy="scroll" data-bs-target="#navbar">
+                <section id="home" class="hero scroll-section">
+                    <div class="hero-text" style="grid-area: topleft">
+                        <h1>Explore the Universe of Physics</h1>
+                        <p>
+                            An inspiring platform to make physics interactive and understandable. Run simulations, learn
+                            complex concepts, and discover the laws that govern our world.
+                        </p>
+                    </div>
 
-        <section id="about" class="about py-3 px-5">
-            <h2 class="title title-1">About Us</h2>
-            <div class="about-container">
-                <div class="about-card">
-                    <h4>About the Site</h4>
-                    <h5>Physics is your friend</h5>
-                    <p class="text-secondary">
-                        This site brings motion to life — literally. Here, kinematics isn't just about equations; it's
-                        about understanding how and why things move. Explore interactive simulations, visual
-                        explanations, and proofs that make physics intuitive and engaging.
-                    </p>
-                </div>
+                    <div class="quote" style="grid-area: right">
+                        <figure class="quote-text">
+                            <blockquote class="blockquote">
+                                <p>We cannot solve our problems with the same thinking we used when we created them.</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                Albert Einstein
+                            </figcaption>
+                        </figure>
 
-                <div class="about-card">
-                    <h4>Our Mission</h4>
-                    <h5>Stop memorizing</h5>
-                    <p class="text-secondary">
-                        We believe physics is best learned by doing, seeing, and questioning. Our mission is to make
-                        core kinematics concepts — displacement, velocity, acceleration, and motion graphs — simple,
-                        visual, and fun to explore.
-                    </p>
-                </div>
+                        <div class="quote-author">
+                            <a href="https://en.wikipedia.org/wiki/Albert_Einstein" target="_blank">
+                                <div class="author-name-ticket">
+                                    <p class="author-name">Albert Einstein</p>
+                                </div>
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/2/28/Albert_Einstein_Head_cleaned.jpg"
+                                    alt="Albert Einstein Head cleaned.jpg"
+                                    width="360" />
+                            </a>
+                        </div>
+                    </div>
 
-                <div class="about-card">
-                    <h4>What You'll Find</h4>
-                    <h5>Everything</h5>
-                    <ul class="text-secondary">
-                        <li>Simulations: Interact with motion in real time.</li>
-                        <li>Laws of Motion: Discover the principles that govern movement.</li>
-                        <li>Visual Explanations: Clear diagrams and examples for every topic.</li>
-                        <li>Proofs & Derivations: Understand where the formulas come from.</li>
+                    <div class="preview" style="grid-area: bottomleft">
+                        <video class="bg-video" autoplay muted loop playsinline>
+                            <source src="assets/video/206846_small.mp4" type="video/mp4" />
+                        </video>
+
+                        <div class="content">
+                            <a
+                                href="https://www.freepik.com/free-vector/gradient-abstract-wireframe-background_15592488.htm">
+                                <img
+                                    class="img-1"
+                                    width="100"
+                                    src="assets/images/5616841.jpg"
+                                    alt="gradient-abstract-wireframe-background" />
+                            </a>
+                            <a href="https://www.freepik.com/free-vector/beautiful-illustration-i-letter_19964699.htm">
+                                <img
+                                    class="img-2"
+                                    width="100"
+                                    src="assets/images/3494836.jpg"
+                                    alt="beautiful-illustration-i-letter" />
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about" class="about scroll-section">
+                    <div class="about-card" style="grid-area: card-1; --index: 0">
+                        <h4>About the Site</h4>
+                        <h5>Physics is your friend</h5>
+                        <p class="text-secondary">
+                            This site brings motion to life — literally. Here, kinematics isn't just about equations;
+                            it's about understanding how and why things move. Explore interactive simulations, visual
+                            explanations, and proofs that make physics intuitive and engaging.
+                        </p>
+                    </div>
+
+                    <div class="about-card" style="grid-area: card-2; --index: 1">
+                        <h4>Our Mission</h4>
+                        <h5>Stop memorizing</h5>
+                        <p class="text-secondary">
+                            We believe physics is best learned by doing, seeing, and questioning. Our mission is to make
+                            core kinematics concepts — displacement, velocity, acceleration, and motion graphs — simple,
+                            visual, and fun to explore.
+                        </p>
+                    </div>
+
+                    <div class="about-card" style="grid-area: card-3; --index: 4">
+                        <h4>What You'll Find</h4>
+                        <h5>Everything</h5>
+                        <ul class="text-secondary">
+                            <li>Simulations: Interact with motion in real time.</li>
+                            <li>Laws of Motion: Discover the principles that govern movement.</li>
+                            <li>Visual Explanations: Clear diagrams and examples for every topic.</li>
+                            <li>Proofs & Derivations: Understand where the formulas come from.</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-card" style="grid-area: card-4; --index: 3">
+                        <h4>How We Teach</h4>
+                        <h5>Better than anyone</h5>
+                        <p class="text-secondary">
+                            We mix theory with visualization. Each topic pairs explanations with simulations and
+                            real-world analogies. You won't just memorize equations — you'll see how they work in
+                            action.
+                        </p>
+                    </div>
+
+                    <div class="about-card" style="grid-area: card-5; --index: 2">
+                        <h4>The Story Behind It</h4>
+                        <h5>Months of hard work</h5>
+                        <p class="text-secondary">
+                            This project began as a student experiment — a way to explain motion graph concepts
+                            visually. Over time, it evolved into a resource for learners worldwide who love to explore
+                            physics beyond the textbook.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="simulations" class="simulations-preview scroll-section">
+                    <div class="title-ticket">
+                        <h2 class="title">Simulations</h2>
+                    </div>
+                    <div class="slider-3d" style="--size: 10">
+                        <div class="slider-indicators">
+                            <button type="button" data-slide-to="0" class="active"></button>
+                            <button type="button" data-slide-to="1"></button>
+                            <button type="button" data-slide-to="2"></button>
+                            <button type="button" data-slide-to="3"></button>
+                            <button type="button" data-slide-to="4"></button>
+                            <button type="button" data-slide-to="5"></button>
+                            <button type="button" data-slide-to="6"></button>
+                            <button type="button" data-slide-to="7"></button>
+                            <button type="button" data-slide-to="8"></button>
+                            <button type="button" data-slide-to="9"></button>
+                        </div>
+                        <div class="slider-3d-perspective-container">
+                            <div class="slider-3d-inner">
+                                <div class="item in-view" style="--index: 0">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_1" />
+                                </div>
+                                <div class="item" style="--index: 1">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_2" />
+                                </div>
+                                <div class="item" style="--index: 2">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_3" />
+                                </div>
+                                <div class="item" style="--index: 3">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_4" />
+                                </div>
+                                <div class="item" style="--index: 4">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_5" />
+                                </div>
+                                <div class="item" style="--index: 5">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_6" />
+                                </div>
+                                <div class="item" style="--index: 6">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_7" />
+                                </div>
+                                <div class="item" style="--index: 7">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_8" />
+                                </div>
+                                <div class="item" style="--index: 8">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_9" />
+                                </div>
+                                <div class="item" style="--index: 9">
+                                    <img src="https://placehold.co/300x400?text=comming+soon" alt="dragon_10" />
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slider-control-prev" type="button">
+                            <span class="slider-control-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <button class="slider-control-next" type="button">
+                            <span class="slider-control-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </section>
+
+                <section id="learn" class="learn scroll-section overflow-hidden">
+                    <div class="title-ticket" style="grid-area: title">
+                        <h2 class="title">Learn Physics</h2>
+                    </div>
+                    <ul class="nav nav-pills" style="grid-area: nav-pills" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link h2 active"
+                                id="pills-home-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-home"
+                                type="button"
+                                role="tab"
+                                aria-controls="pills-home"
+                                aria-selected="true">
+                                Concepts
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link h2"
+                                id="pills-profile-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-profile"
+                                type="button"
+                                role="tab"
+                                aria-controls="pills-profile"
+                                aria-selected="false">
+                                Videos
+                            </button>
+                        </li>
                     </ul>
-                </div>
+                    <div class="tab-content" id="pills-tabContent" style="grid-area: tab-content">
+                        <div
+                            class="tab-pane fade concepts-tab show active"
+                            id="pills-home"
+                            role="tabpanel"
+                            aria-labelledby="pills-home-tab"
+                            tabindex="0">
+                            <div class="concept-card-container">
+                                <div class="concept-card fade-up" style="--index: 0">
+                                    <div class="concept-card-header">
+                                        <h4 class="concept-card-title">Displacement</h4>
+                                    </div>
+                                    <div class="concept-card-body">
+                                        <p>
+                                            The change in position of an object. It's a vector quantity with both
+                                            magnitude and direction.
+                                        </p>
+                                        <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
 
-                <div class="about-card">
-                    <h4>How We Teach</h4>
-                    <h5>Better than anyone</h5>
-                    <p class="text-secondary">
-                        We mix theory with visualization. Each topic pairs explanations with simulations and real-world
-                        analogies. You won't just memorize equations — you'll see how they work in action.
-                    </p>
-                </div>
+                                        <div class="variables">
+                                            <h5>Variables</h5>
+                                            <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
+                                            <div class="variable-item">\( x_f = \text{final position} \)</div>
+                                            <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <div class="about-card">
-                    <h4>The Story Behind It</h4>
-                    <h5>Months of hard work</h5>
-                    <p class="text-secondary">
-                        This project began as a student experiment — a way to explain motion graph concepts visually.
-                        Over time, it evolved into a resource for learners worldwide who love to explore physics beyond
-                        the textbook.
-                    </p>
-                </div>
-            </div>
-        </section>
+                                <div class="concept-card fade-up" style="--index: 1">
+                                    <div class="concept-card-header">
+                                        <h4 class="concept-card-title">Displacement</h4>
+                                    </div>
+                                    <div class="concept-card-body">
+                                        <p>
+                                            The change in position of an object. It's a vector quantity with both
+                                            magnitude and direction.
+                                        </p>
+                                        <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
 
-        <section id="simulations" class="py-3 simulations-preview">
-            <h2 class="title title-1 m-0">Simulations</h2>
-            <div class="slider-3d" style="--size: 20">
-                <div class="slider-indicators">
-                    <button type="button" data-slide-to="0" class="active"></button>
-                    <button type="button" data-slide-to="1"></button>
-                    <button type="button" data-slide-to="2"></button>
-                    <button type="button" data-slide-to="3"></button>
-                    <button type="button" data-slide-to="4"></button>
-                    <button type="button" data-slide-to="5"></button>
-                    <button type="button" data-slide-to="6"></button>
-                    <button type="button" data-slide-to="7"></button>
-                    <button type="button" data-slide-to="8"></button>
-                    <button type="button" data-slide-to="9"></button>
-                    <button type="button" data-slide-to="10"></button>
-                    <button type="button" data-slide-to="11"></button>
-                    <button type="button" data-slide-to="12"></button>
-                    <button type="button" data-slide-to="13"></button>
-                    <button type="button" data-slide-to="14"></button>
-                    <button type="button" data-slide-to="15"></button>
-                    <button type="button" data-slide-to="16"></button>
-                    <button type="button" data-slide-to="17"></button>
-                    <button type="button" data-slide-to="18"></button>
-                    <button type="button" data-slide-to="19"></button>
-                </div>
-                <div class="slider-3d-perspective-container">
-                    <div class="slider-3d-inner">
-                        <div class="item in-view" style="--index: 0">
-                            <img src="images/dragon_1.jpg" alt="dragon_1" />
-                        </div>
-                        <div class="item" style="--index: 1"><img src="images/dragon_2.jpg" alt="dragon_2" /></div>
-                        <div class="item" style="--index: 2"><img src="images/dragon_3.jpg" alt="dragon_3" /></div>
-                        <div class="item" style="--index: 3"><img src="images/dragon_4.jpg" alt="dragon_4" /></div>
-                        <div class="item" style="--index: 4"><img src="images/dragon_5.jpg" alt="dragon_5" /></div>
-                        <div class="item" style="--index: 5"><img src="images/dragon_6.jpg" alt="dragon_6" /></div>
-                        <div class="item" style="--index: 6"><img src="images/dragon_7.jpg" alt="dragon_7" /></div>
-                        <div class="item" style="--index: 7"><img src="images/dragon_8.jpg" alt="dragon_8" /></div>
-                        <div class="item" style="--index: 8"><img src="images/dragon_9.jpg" alt="dragon_9" /></div>
-                        <div class="item" style="--index: 9"><img src="images/dragon_10.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 10"><img src="images/dragon_1.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 11"><img src="images/dragon_2.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 12"><img src="images/dragon_3.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 13"><img src="images/dragon_4.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 14"><img src="images/dragon_5.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 15"><img src="images/dragon_6.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 16"><img src="images/dragon_7.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 17"><img src="images/dragon_8.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 18"><img src="images/dragon_9.jpg" alt="dragon_10" /></div>
-                        <div class="item" style="--index: 19"><img src="images/dragon_10.jpg" alt="dragon_10" /></div>
-                    </div>
-                </div>
-                <button class="slider-control-prev" type="button">
-                    <span class="slider-control-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-                        </svg>
-                    </span>
-                </button>
-                <button class="slider-control-next" type="button">
-                    <span class="slider-control-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </section>
+                                        <div class="variables">
+                                            <h5>Variables</h5>
+                                            <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
+                                            <div class="variable-item">\( x_f = \text{final position} \)</div>
+                                            <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <section id="learn" class="learn px-5 py-3 overflow-hidden">
-            <h2 class="title title-2">Learn Physics</h2>
-            <ul class="nav nav-pills mb-3 mx-auto w-fit-content column-gap-1 p-1" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button
-                        class="nav-link active"
-                        id="pills-home-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#pills-home"
-                        type="button"
-                        role="tab"
-                        aria-controls="pills-home"
-                        aria-selected="true">
-                        Concepts
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button
-                        class="nav-link"
-                        id="pills-profile-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#pills-profile"
-                        type="button"
-                        role="tab"
-                        aria-controls="pills-profile"
-                        aria-selected="false">
-                        Equations
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-                <div
-                    class="tab-pane fade concepts-tab show active"
-                    id="pills-home"
-                    role="tabpanel"
-                    aria-labelledby="pills-home-tab"
-                    tabindex="0">
-                    <div class="concept-card-container">
-                        <div class="concept-card fade-up" style="--index: 0">
-                            <div class="concept-card-header">
-                                <h4 class="concept-card-title">Displacement</h4>
-                            </div>
-                            <div class="concept-card-body">
-                                <p>
-                                    The change in position of an object. It's a vector quantity with both magnitude and
-                                    direction.
-                                </p>
-                                <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
+                                <div class="concept-card fade-up" style="--index: 2">
+                                    <div class="concept-card-header">
+                                        <h4 class="concept-card-title">Displacement</h4>
+                                    </div>
+                                    <div class="concept-card-body">
+                                        <p>
+                                            The change in position of an object. It's a vector quantity with both
+                                            magnitude and direction.
+                                        </p>
+                                        <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
 
-                                <div class="variables">
-                                    <h5>Variables</h5>
-                                    <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
-                                    <div class="variable-item">\( x_f = \text{final position} \)</div>
-                                    <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        <div class="variables">
+                                            <h5>Variables</h5>
+                                            <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
+                                            <div class="variable-item">\( x_f = \text{final position} \)</div>
+                                            <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="concept-card fade-up" style="--index: 3">
+                                    <div class="concept-card-header">
+                                        <h4 class="concept-card-title">Displacement</h4>
+                                    </div>
+                                    <div class="concept-card-body">
+                                        <p>
+                                            The change in position of an object. It's a vector quantity with both
+                                            magnitude and direction.
+                                        </p>
+                                        <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
+
+                                        <div class="variables">
+                                            <h5>Variables</h5>
+                                            <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
+                                            <div class="variable-item">\( x_f = \text{final position} \)</div>
+                                            <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="concept-card fade-up" style="--index: 4">
+                                    <div class="concept-card-header">
+                                        <h4 class="concept-card-title">Displacement</h4>
+                                    </div>
+                                    <div class="concept-card-body">
+                                        <p>
+                                            The change in position of an object. It's a vector quantity with both
+                                            magnitude and direction.
+                                        </p>
+                                        <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
+
+                                        <div class="variables">
+                                            <h5>Variables</h5>
+                                            <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
+                                            <div class="variable-item">\( x_f = \text{final position} \)</div>
+                                            <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="concept-card fade-up" style="--index: 5">
+                                    <div class="concept-card-header">
+                                        <h4 class="concept-card-title">Displacement</h4>
+                                    </div>
+                                    <div class="concept-card-body">
+                                        <p>
+                                            The change in position of an object. It's a vector quantity with both
+                                            magnitude and direction.
+                                        </p>
+                                        <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
+
+                                        <div class="variables">
+                                            <h5>Variables</h5>
+                                            <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
+                                            <div class="variable-item">\( x_f = \text{final position} \)</div>
+                                            <div class="variable-item">\( x_i = \text{initial position} \)</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="concept-card fade-up" style="--index: 1">
-                            <div class="concept-card-header">
-                                <h4 class="concept-card-title">Displacement</h4>
-                            </div>
-                            <div class="concept-card-body">
-                                <p>
-                                    The change in position of an object. It's a vector quantity with both magnitude and
-                                    direction.
-                                </p>
-                                <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
-
-                                <div class="variables">
-                                    <h5>Variables</h5>
-                                    <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
-                                    <div class="variable-item">\( x_f = \text{final position} \)</div>
-                                    <div class="variable-item">\( x_i = \text{initial position} \)</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="concept-card fade-up" style="--index: 2">
-                            <div class="concept-card-header">
-                                <h4 class="concept-card-title">Displacement</h4>
-                            </div>
-                            <div class="concept-card-body">
-                                <p>
-                                    The change in position of an object. It's a vector quantity with both magnitude and
-                                    direction.
-                                </p>
-                                <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
-
-                                <div class="variables">
-                                    <h5>Variables</h5>
-                                    <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
-                                    <div class="variable-item">\( x_f = \text{final position} \)</div>
-                                    <div class="variable-item">\( x_i = \text{initial position} \)</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="concept-card fade-up" style="--index: 3">
-                            <div class="concept-card-header">
-                                <h4 class="concept-card-title">Displacement</h4>
-                            </div>
-                            <div class="concept-card-body">
-                                <p>
-                                    The change in position of an object. It's a vector quantity with both magnitude and
-                                    direction.
-                                </p>
-                                <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
-
-                                <div class="variables">
-                                    <h5>Variables</h5>
-                                    <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
-                                    <div class="variable-item">\( x_f = \text{final position} \)</div>
-                                    <div class="variable-item">\( x_i = \text{initial position} \)</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="concept-card fade-up" style="--index: 4">
-                            <div class="concept-card-header">
-                                <h4 class="concept-card-title">Displacement</h4>
-                            </div>
-                            <div class="concept-card-body">
-                                <p>
-                                    The change in position of an object. It's a vector quantity with both magnitude and
-                                    direction.
-                                </p>
-                                <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
-
-                                <div class="variables">
-                                    <h5>Variables</h5>
-                                    <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
-                                    <div class="variable-item">\( x_f = \text{final position} \)</div>
-                                    <div class="variable-item">\( x_i = \text{initial position} \)</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="concept-card fade-up" style="--index: 5">
-                            <div class="concept-card-header">
-                                <h4 class="concept-card-title">Displacement</h4>
-                            </div>
-                            <div class="concept-card-body">
-                                <p>
-                                    The change in position of an object. It's a vector quantity with both magnitude and
-                                    direction.
-                                </p>
-                                <div class="concept-card-equation">\( \vec{x} = \vec{x_f} - \vec{x_i} \)</div>
-
-                                <div class="variables">
-                                    <h5>Variables</h5>
-                                    <div class="variable-item">\( \Delta{x} = \text{displacement} \)</div>
-                                    <div class="variable-item">\( x_f = \text{final position} \)</div>
-                                    <div class="variable-item">\( x_i = \text{initial position} \)</div>
-                                </div>
-                            </div>
+                        <div
+                            class="tab-pane fade videos-tab"
+                            id="pills-profile"
+                            role="tabpanel"
+                            aria-labelledby="pills-profile-tab"
+                            tabindex="0">
+                            <div class="videos-container"></div>
                         </div>
                     </div>
-                </div>
-                <div
-                    class="tab-pane fade equations-tab"
-                    id="pills-profile"
-                    role="tabpanel"
-                    aria-labelledby="pills-profile-tab"
-                    tabindex="0">
-                    <div class="equation-card-container">
-                        <div class="equation-card fade-up" style="--index: 0">
-                            <div class="front-face">
-                                <h4 class="equation-card-title">Velocity-Time Equation</h4>
-                                <div class="equation-card-equation">\( v = v_0 + at \)</div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                            <div class="back-face">
-                                <div class="equation-card-body">
-                                    <h5 class="equation-card-header">Description:</h5>
-                                    <p>Final velocity as a function of initial velocity, acceleration, and time</p>
-                                    <hr />
-                                    <h5 class="equation-card-header">When to use?</h5>
-                                    <p>Use when you know: v₀, a, t and need to find: v</p>
-                                </div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="equation-card fade-up" style="--index: 1">
-                            <div class="front-face">
-                                <h4 class="equation-card-title">Velocity-Time Equation</h4>
-                                <div class="equation-card-equation">\( v = v_0 + at \)</div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                            <div class="back-face">
-                                <div class="equation-card-body">
-                                    <h5 class="equation-card-header">Description:</h5>
-                                    <p>Final velocity as a function of initial velocity, acceleration, and time</p>
-                                    <hr />
-                                    <h5 class="equation-card-header">When to use?</h5>
-                                    <p>Use when you know: v₀, a, t and need to find: v</p>
-                                </div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="equation-card fade-up" style="--index: 2">
-                            <div class="front-face">
-                                <h4 class="equation-card-title">Velocity-Time Equation</h4>
-                                <div class="equation-card-equation">\( v = v_0 + at \)</div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                            <div class="back-face">
-                                <div class="equation-card-body">
-                                    <h5 class="equation-card-header">Description:</h5>
-                                    <p>Final velocity as a function of initial velocity, acceleration, and time</p>
-                                    <hr />
-                                    <h5 class="equation-card-header">When to use?</h5>
-                                    <p>Use when you know: v₀, a, t and need to find: v</p>
-                                </div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="equation-card fade-up" style="--index: 3">
-                            <div class="front-face">
-                                <h4 class="equation-card-title">Velocity-Time Equation</h4>
-                                <div class="equation-card-equation">\( v = v_0 + at \)</div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                            <div class="back-face">
-                                <div class="equation-card-body">
-                                    <h5 class="equation-card-header">Description:</h5>
-                                    <p>Final velocity as a function of initial velocity, acceleration, and time</p>
-                                    <hr />
-                                    <h5 class="equation-card-header">When to use?</h5>
-                                    <p>Use when you know: v₀, a, t and need to find: v</p>
-                                </div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="equation-card fade-up" style="--index: 4">
-                            <div class="front-face">
-                                <h4 class="equation-card-title">Velocity-Time Equation</h4>
-                                <div class="equation-card-equation">\( v = v_0 + at \)</div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                            <div class="back-face">
-                                <div class="equation-card-body">
-                                    <h5 class="equation-card-header">Description:</h5>
-                                    <p>Final velocity as a function of initial velocity, acceleration, and time</p>
-                                    <hr />
-                                    <h5 class="equation-card-header">When to use?</h5>
-                                    <p>Use when you know: v₀, a, t and need to find: v</p>
-                                </div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="equation-card fade-up" style="--index: 5">
-                            <div class="front-face">
-                                <h4 class="equation-card-title">Velocity-Time Equation</h4>
-                                <div class="equation-card-equation">\( v = v_0 + at \)</div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                            <div class="back-face">
-                                <div class="equation-card-body">
-                                    <h5 class="equation-card-header">Description:</h5>
-                                    <p>Final velocity as a function of initial velocity, acceleration, and time</p>
-                                    <hr />
-                                    <h5 class="equation-card-header">When to use?</h5>
-                                    <p>Use when you know: v₀, a, t and need to find: v</p>
-                                </div>
-                                <div class="equation-card-footer">
-                                    <p class="click">Click to see details</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
+            </main>
+        </div>
+        <!--
 
         <footer>
-            <div class="text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptates magni unde animi corporis culpa
-                quas corrupti exercitationem obcaecati doloremque?
+            <div class="social-media-container">
+                <a href="" class="social-link">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="" class="social-link">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="" class="social-link">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="" class="social-link">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
             </div>
-        </footer>
+            <p>© 2024 Physics Universe. All Rights Reserved.</p>
+        </footer> -->
     </body>
 </html>

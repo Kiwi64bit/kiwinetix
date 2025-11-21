@@ -4,28 +4,33 @@
 .concept-card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1.5rem;
+    gap: var(--gap, 0);
 }
 
 .concept-card {
+    --corner-radius: 1rem;
     --bg-color: #{color.adjust($dark-gray, $alpha: -0.5)};
-    --border-color: #{color.adjust($violet-blue, $alpha: -0.7)};
-    --border-color-hover: #{$violet-blue};
-    --header-bg-color: #{$violet-blue};
-    --equation-bg-color: #{color.adjust($violet-blue, $alpha: -0.8)};
+    --header-bg-color: #{$primary-color};
+    --equation-bg-color: #{color.adjust($primary-color, $alpha: -0.8)};
     --variable-item-bg-color: #{color.adjust($muted-indigo)};
     background-color: var(--bg-color);
-    border-radius: 0.75rem;
-    border: 2px var(--border-color) solid;
     overflow: hidden;
     width: 100%;
     height: fit-content;
     cursor: pointer;
     transition: border 0.25s ease;
+    clip-path: polygon(
+        var(--corner-radius) 0,
+        calc(100% - var(--corner-radius)) 0,
+        100% var(--corner-radius),
+        100% calc(100% - var(--corner-radius)),
+        calc(100% - var(--corner-radius)) 100%,
+        var(--corner-radius) 100%,
+        0 calc(100% - var(--corner-radius)),
+        0 var(--corner-radius)
+    );
 
     &:hover {
-        border-color: var(--border-color-hover);
-
         .concept-card-header {
             &::before {
                 content: "";
@@ -80,7 +85,14 @@
             font-size: 1.5rem;
             padding: 0.5rem 1rem;
             text-align: center;
-            border-radius: 0.5rem;
+            clip-path: polygon(
+                var(--corner-radius) 0,
+                100% 0,
+                100% calc(100% - var(--corner-radius)),
+                calc(100% - var(--corner-radius)) 100%,
+                0 100%,
+                0 var(--corner-radius)
+            );
         }
 
         .variables {
@@ -89,8 +101,7 @@
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition:
-                all 0.75s ease,
+            transition: all 0.75s ease,
                 max-height 0.75s
                     linear(
                         0,
@@ -116,10 +127,18 @@
                     );
 
             .variable-item {
+                --corner-radius: 0.5rem;
                 background-color: var(--equation-bg-color);
                 padding: 0.25rem 0.5rem;
-                border-radius: 0.5rem;
                 margin-bottom: 0.5rem;
+                clip-path: polygon(
+                    var(--corner-radius) 0,
+                    100% 0,
+                    100% calc(100% - var(--corner-radius)),
+                    calc(100% - var(--corner-radius)) 100%,
+                    0 100%,
+                    0 var(--corner-radius)
+                );
             }
         }
     }

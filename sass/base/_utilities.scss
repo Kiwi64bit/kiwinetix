@@ -9,39 +9,66 @@
     fill: $primary-color;
 }
 
-.w-fit-content {
-    width: fit-content;
+:has(> .line-right, > .line-bottom) {
+    position: relative;
 }
 
-.title {
-    text-align: center;
-    color: var(--color, #fff);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(90deg, var(--color, #fff)) 50% 100% / 16rem 3px no-repeat;
+.line-right {
+    border: none;
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: hsl(0 0% 100% / 0.2);
+    opacity: 1;
+    margin: 0;
 }
 
-.title-1 {
-    --color: #{$bright-purple};
+.line-bottom {
+    border: none;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: hsl(0 0% 100% / 0.2);
+    opacity: 1;
+    margin: 0;
 }
 
-.title-2 {
-    --color: #{$violet-blue};
+.folder {
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
+    object-position: center;
+    clip-path: polygon(
+        1rem 1rem,
+        calc(50% - 1rem) 1rem,
+        calc(50% + 1rem) 0,
+        calc(100% - 1rem) 0,
+        100% 1rem,
+        100% calc(100% - 1rem),
+        calc(100% - 1rem) 100%,
+        1rem 100%,
+        0 calc(100% - 1rem),
+        0 2rem
+    );
 }
 
 .btn-custom-primary {
-    --bs-btn-color: #000;
+    --bs-btn-color: #fff;
     --bs-btn-bg: #{$primary-color};
     --bs-btn-border-color: var(--bs-btn-bg);
-    --bs-btn-hover-color: #000;
+    --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #{color.adjust($primary-color, $lightness: -10%)};
     --bs-btn-hover-border-color: var(--bs-btn-hover-bg);
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    --bs-btn-active-color: #000;
+    --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #{color.adjust($primary-color, $lightness: -15%)};
     --bs-btn-active-border-color: var(--bs-btn-active-bg);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #{$primary-color};
     --bs-btn-disabled-border-color: var(--bs-btn-disabled-bg);
 }

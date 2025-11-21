@@ -24,12 +24,66 @@ $(".equation-card-container").on("click", ".equation-card", function (event) {
      * @type {JQuery<HTMLElement>}
      */
     const $card = $(this);
-    $card.toggleClass("flipped")
+    $card.toggleClass("flipped");
 });
 
 /* ------------------------------------------------------------------ */
-/* --------------------------- FUNCTIONS ----------------------------- */
+/* ------------------------ Scroll Handler -------------------------- */
 /* ------------------------------------------------------------------ */
+
+const navbarProgress = document.getElementById("navbarProgress");
+const mainSection = document.getElementById("main");
+const scrollSections = document.querySelectorAll(".scroll-section");
+
+(function loop() {
+    const rect = mainSection.getBoundingClientRect();
+    const y = mainSection.scrollTop;
+    const amount = mainSection.scrollHeight - mainSection.clientHeight;
+    const progress = y / amount;
+    navbarProgress.style.setProperty("width", `${100 * progress}%`);
+
+    scrollSections.forEach(
+        /** @param {HTMLElement} section */
+        section => {
+            const visibility = calculateVerticalVisibility(section, rect.top, rect.bottom);
+            if (visibility > 0.4) {
+                section.classList.add("show");
+            } else {
+                section.classList.remove("show");
+            }
+        }
+    );
+
+    requestAnimationFrame(loop);
+})();
+
+/* ------------------------------------------------------------------ */
+/* --------------------------- FUNCTIONS ---------------------------- */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Calculate how much an element is visible inside a range.
+ * @param {HTMLElement} element
+ * @param {number} start
+ * @param {number} end
+ */
+function calculateVerticalVisibility(element, start, end) {
+    const rect = element.getBoundingClientRect();
+
+    if (rect.bottom <= start || rect.top >= end) return 0;
+
+    const visible = Math.min(rect.bottom, end) - Math.max(rect.top, start);
+
+    let ratio = 0;
+    if (rect.height < end - start) {
+        ratio = visible / rect.height;
+    } else {
+        ratio = visible / (end - start);
+    }
+    ratio = Math.min(Math.max(ratio, 0), 1);
+
+    return ratio;
+}
 
 /**
  * Toggles the card's expanded/collapsed state.

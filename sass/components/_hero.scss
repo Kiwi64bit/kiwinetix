@@ -1,25 +1,171 @@
 @use "../abstracts" as *;
+@use "sass:color";
 
 .hero {
-    .text-content {
-        h1 {
-            font-size: 2rem;
-            @include respond("sm") {
-                font-size: 2.5rem;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 20vw;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "topleft right"
+        "bottomleft right";
+
+    & > * {
+        border: $main-border;
+    }
+
+    .hero-text {
+        padding: 1rem;
+    }
+
+    .quote {
+        padding: 1rem;
+
+        .quote-author {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center;
+            --corner-radius: 1rem;
+            --name-width: 70%;
+            --name-height: 3rem;
+            --name-angle: 45deg;
+            --name-offset: calc(var(--name-height) / tan(var(--name-angle)));
+            --name-margin: 0.5rem;
+            @include respond("") {
             }
-            @include respond("md") {
-                font-size: 3rem;
+
+            .author-name-ticket {
+                display: flex;
+                align-items: center;
+                width: calc(var(--name-width) + var(--name-offset) / 2);
+                height: calc(var(--name-height) - var(--name-margin));
+                position: absolute;
+                background-color: $violet-blue;
+                left: 0;
+                bottom: 0;
+                transition: all 0.25s ease;
+                clip-path: polygon(
+                    0 0,
+                    calc(
+                            100% - var(--name-offset) - var(--name-margin) *
+                                (1 / sin(var(--name-angle)) - 1 / tan(var(--name-angle)))
+                        )
+                        0,
+                    calc(100% - var(--name-margin) / sin(var(--name-angle))) 100%,
+                    var(--corner-radius) 100%,
+                    0 calc(100% - var(--corner-radius)),
+                    0 100%
+                );
+
+                &:hover {
+                    scale: 1.01;
+                    background-color: #{color.adjust($primary-color, $lightness: -10%)};
+                }
+
+                .author-name {
+                    color: #fff;
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    translate: 0;
+                    font-size: 1.25rem;
+                    margin: 0;
+                    margin-left: 1em;
+                }
             }
-            @include respond("lg") {
-                font-size: 3.5rem;
-            }
-            @include respond("xl") {
-                font-size: 4rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                object-fit: cover;
+                object-position: center;
+                top: 0;
+                left: 0;
+                transition: scale 0.25s ease;
+                clip-path: polygon(
+                    var(--corner-radius) 0,
+                    calc(100% - var(--corner-radius)) 0,
+                    100% var(--corner-radius),
+                    100% calc(100% - var(--corner-radius)),
+                    calc(100% - var(--corner-radius)) 100%,
+                    calc(var(--name-width) + var(--name-offset) / 2) 100%,
+                    calc(var(--name-width) - var(--name-offset) / 2) calc(100% - var(--name-height)),
+                    0 calc(100% - var(--name-height)),
+                    0 calc(100% - var(--corner-radius) - var(--name-height)),
+                    0 var(--corner-radius)
+                );
+
+                &:hover {
+                    scale: 1.01;
+                }
             }
         }
+    }
 
-        .btn {
-            font-weight: 600;
+    .preview {
+        position: relative;
+        .bg-video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.5);
+            z-index: -1;
+        }
+
+        .content {
+            --padding: 1rem;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            .img-1 {
+                position: absolute;
+                top: var(--padding);
+                left: var(--padding);
+                width: calc(100% / 5);
+                aspect-ratio: 2 / 1;
+                object-fit: cover;
+                object-position: center;
+                clip-path: polygon(
+                    1rem 0,
+                    calc(50% - 0.5rem) 0,
+                    calc(50% + 0.5rem) 0.5rem,
+                    calc(100% - 1rem) 0.5rem,
+                    100% 1.5rem,
+                    100% calc(100% - 1rem),
+                    calc(100% - 1rem) 100%,
+                    1rem 100%,
+                    0 calc(100% - 1rem),
+                    0 1rem
+                );
+            }
+            .img-2 {
+                position: absolute;
+                bottom: var(--padding);
+                right: var(--padding);
+                width: calc(100% / 4);
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                object-position: center;
+                clip-path: polygon(
+                    2rem 0,
+                    calc(100% - 1rem) 0,
+                    100% 1rem,
+                    100% calc(100% - 1rem),
+                    calc(100% - 1rem) 100%,
+                    1rem 100%,
+                    0 calc(100% - 1rem),
+                    0 calc(50% + 0.5rem),
+                    1rem calc(50% - 0.5rem),
+                    1rem 1rem
+                );
+            }
         }
     }
 }

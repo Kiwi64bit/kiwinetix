@@ -1,12 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 $breakpoints: (
     "xs": 0,
     "sm": 576px,
     "md": 768px,
     "lg": 992px,
     "xl": 1200px,
-    "xxl": 1400px
+    "xxl": 1400px,
 );
 
 $gray-950: hsl(225, 70%, 5%);
@@ -31,8 +29,9 @@ $gradient-1: linear-gradient(90deg, $bright-purple 0%, #6366f1 100%);
 $gradient-2: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
 $gradient-3: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
 
-$primary-color: $bright-purple;
+$primary-color: $violet-blue;
 $accent-color: $primary-color;
+$main-border: 1px hsl(0 0% 100% / 0.2) solid;
 
-$font1: "IBM Plex Sans", sans-serif;
-$font2: "Inter", sans-serif;
+$font1: "ABCWhytePlus", sans-serif;
+$font2: "IBM Plex Mono", monospace;

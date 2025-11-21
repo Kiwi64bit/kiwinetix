@@ -1,6 +1,38 @@
 @use "../abstracts" as *;
 
+.simulations-preview {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 1fr;
+    border: $main-border;
+
+    .title-ticket {
+        --corner-radius: 1.5rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: $primary-color;
+        grid-area: 1 / 1 / 2 / 2;
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% calc(100% - var(--corner-radius)),
+            calc(100% - var(--corner-radius)) 100%,
+            0 100%
+        );
+
+        .title {
+            margin: 0;
+        }
+    }
+}
+
 .slider-3d {
+    grid-area: 1 / 1 / 3 / 3;
     $breakpoint: "";
     --view-index: 0;
     --slider-card-width: max(25vw, 100px);
@@ -9,7 +41,7 @@
     --slider-card-aspect-ratio: 3 / 4;
     --slider-radius: calc((var(--slider-card-width) + var(--slider-card-margin)) * var(--size) / 6.283185);
     --slider-width: 50vw;
-    --slider-perspective: min(700px, var(--slider-radius));
+    --slider-perspective: var(--slider-radius);
     --slider-rotationX: 0deg;
     --slider-offsetY: 0px;
     --slider-height: calc(var(--slider-card-height) + 100px);
@@ -43,17 +75,24 @@
             .item {
                 --slider-item-offsetZ: var(--slider-radius);
                 --slider-item-blur: 2px;
+                --slider-item-corner-radius: calc(var(--slider-card-width) / 8);
                 width: var(--slider-card-width);
                 aspect-ratio: var(--slider-card-aspect-ratio);
-                border: #000 2px solid;
                 border-radius: 0.5rem;
-                overflow: hidden;
                 position: absolute;
                 transition: transform 0.25s ease-in-out;
                 transform: rotateY(calc(var(--index) * (360 / var(--size)) * -1deg))
                     translateZ(var(--slider-item-offsetZ)) rotateY(180deg);
                 backface-visibility: hidden;
                 pointer-events: none;
+                clip-path: polygon(
+                    var(--slider-item-corner-radius) 0,
+                    100% 0,
+                    100% calc(100% - var(--slider-item-corner-radius)),
+                    calc(100% - var(--slider-item-corner-radius)) 100%,
+                    0 100%,
+                    0 var(--slider-item-corner-radius)
+                );
 
                 &.in-view {
                     --slider-item-blur: 0px;

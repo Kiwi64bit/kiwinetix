@@ -1,0 +1,25 @@
+@use "../abstracts" as *;
+@use "sass:color";
+
+body {
+    font-family: $font1;
+    font-weight: 400;
+    position: relative;
+    height: 100vh;
+    background-color: color.mix($gray-950, $purple-950, $weight: 65%);
+    background-image: #{$gradient-purple};
+    padding: 1rem;
+}
+
+.body-content {
+    position: relative;
+    height: 100%;
+    border: $main-border;
+    border-radius: 0.5rem;
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "navbar"
+        "main";
+}
